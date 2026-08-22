@@ -55,12 +55,17 @@
     for (let difficulty = 1; difficulty <= 5; difficulty++) {
       const config = DIFFICULTY_CONFIG[difficulty];
       let attempts = 0;
-      while (pool.filter(p => p.difficulty === difficulty).length < 14 && attempts < 3000) {
+      while (pool.filter(p => p.difficulty === difficulty).length < 25 && attempts < 5000) {
         attempts++;
         const shape = generateShape(Math.floor(Math.random() * (config.maxCells - config.minCells + 1)) + config.minCells);
         if (!shape) continue;
         const normalized = normalizeShape(shape);
         if (!isValidShape(normalized)) continue;
+        
+        // Pre-verify basic solvability (on empty board)
+        const emptyBoard = createEmptyBoard();
+        if (!isSolvable(emptyBoard, normalized, config.rotations, config.mirrors)) continue;
+
         const signature = shapeSignature(normalized);
         if (pool.some(puzzle => puzzle.difficulty === difficulty && puzzle.signature === signature)) continue;
         pool.push({
@@ -75,6 +80,30 @@
     }
     state.challengePool = pool;
     if (state.challengePool.length < 15) state.challengePool.push(...createFallbackPuzzles());
+  }
+
+  function isSolvable(board, shape, rotations, mirrors) {
+    // Basic solver implementation
+    const variants = generateShapeVariants(shape, {rotations, mirrors});
+    // Check if any variant fits anywhere on the board
+    for (const variant of variants) {
+        for (let y = 0; y < BOARD_SIZE; y++) {
+            for (let x = 0; x < BOARD_SIZE; x++) {
+                // Check if all cells of variant fit starting from anchor x,y
+                if (canPlaceVariant(board, variant, x, y)) return true;
+            }
+        }
+    }
+    return false;
+  }
+
+  function canPlaceVariant(board, variant, anchorX, anchorY) {
+    const cells = translateShapeToAnchor(variant, {x: anchorX, y: anchorY});
+    for(const cell of cells) {
+        if(cell.x < 0 || cell.x >= BOARD_SIZE || cell.y < 0 || cell.y >= BOARD_SIZE) return false;
+        if(board[cell.y][cell.x] !== null) return false;
+    }
+    return true;
   }
 
   function generateShape(cellCount) {
