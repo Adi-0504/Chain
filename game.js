@@ -507,7 +507,7 @@
 
             <span class="challenge-stars"
               aria-label="${challenge.difficulty} stars">
-              ${"??.repeat(challenge.difficulty)}
+              ${"¡¹".repeat(challenge.difficulty)}
             </span>
           </div>
 
@@ -572,7 +572,7 @@
 
     if (dom.resultDifficulty) {
       dom.resultDifficulty.textContent =
-        "??.repeat(
+        "¡¹".repeat(
           state.currentChallenge.difficulty
         );
     }
@@ -923,7 +923,7 @@
     );
   }
 
-  window.ChainGame = {
+  if (typeof window !== "undefined") { window.ChainGame = {
     state,
     init,
     showChallenges,
@@ -940,3 +940,8 @@
   );
 })();
 
+
+module.exports = { state, buildPuzzlePool, generateShape, isValidShape };
+
+
+} else { module.exports = { state, buildPuzzlePool, generateShape, isValidShape }; }

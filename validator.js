@@ -1,0 +1,1 @@
+const game = require('./game.js'); game.buildPuzzlePool(); const pool = game.state.challengePool; console.log('Total puzzles:', pool.length); const invalid = pool.filter(p => !p.shape || p.shape.length === 0); if (invalid.length > 0) { console.error('Found invalid puzzles:', invalid.length); process.exit(1); } console.log('All puzzles valid.');
