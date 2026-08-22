@@ -33,18 +33,18 @@
     dom.board = $("#game-board");
     dom.challengeGrid = $("#challenge-grid");
     dom.targetPreview = $("#target-preview");
-    dom.nextPreview = $("#next-preview");
+    dom.nextPreview = $("#nextPiecePreview");
     dom.gameTitle = $("#game-title");
     dom.gameStars = $("#game-stars");
     dom.roundNumber = $("#round-number");
-    dom.undoButton = $("#undo-button");
-    dom.undoCount = $("#undo-count");
-    dom.resultScore = $("#result-score");
+    dom.undoButton = $("#undoButton");
+    dom.undoCount = $("#undoCount");
+    dom.resultScore = $("#resultScore");
     dom.resultDifficulty = $("#result-difficulty");
-    dom.startButton = $("#start-button");
-    dom.continueButton = $("#continue-button");
-    dom.endButton = $("#end-button");
-    dom.backButton = $("#back-button");
+    dom.startButton = $("#startButton");
+    dom.continueButton = $("#continueButton");
+    dom.endButton = $("#finishButton");
+    dom.backButton = $("#gameBackButton");
     buildPuzzlePool();
     resetBoard();
     bindEvents();
@@ -203,7 +203,7 @@
       card.innerHTML = `
         <div class="challenge-card-header">
             <span class="challenge-number">${String(index + 1).padStart(2, "0")}</span>
-            <span class="challenge-stars" aria-label="${challenge.difficulty} stars">${"¡¹".repeat(challenge.difficulty)}</span>
+            <span class="challenge-stars" aria-label="${challenge.difficulty} stars">${"ï¿½ï¿½".repeat(challenge.difficulty)}</span>
         </div>
         <div class="challenge-preview">${renderShapePreview(challenge.shape, "shape-preview")}</div>
         <div class="challenge-footer"><strong>${getTranslation("challenge.card", "Challenge")}</strong><span class="challenge-arrow"><i data-lucide="arrow-up-right"></i></span></div>
@@ -220,7 +220,7 @@
     state.currentChallenge = challenge;
     state.score = 0;
     resetBoard();
-    showScreen("screen-game");
+    showScreen("gameScreen");
     renderCurrentChallenge();
     AudioManager?.switch?.();
   }
@@ -229,7 +229,7 @@
     const challenge = state.currentChallenge;
     if (!challenge) return;
     if (dom.gameTitle) dom.gameTitle.textContent = getTranslation("challenge.card", "Challenge");
-    if (dom.gameStars) dom.gameStars.textContent = "¡¹".repeat(challenge.difficulty);
+    if (dom.gameStars) dom.gameStars.textContent = "ï¿½ï¿½".repeat(challenge.difficulty);
     if (dom.targetPreview) dom.targetPreview.innerHTML = renderShapePreview(challenge.shape, "target-grid");
     renderNextPiece();
   }
@@ -324,8 +324,8 @@
 
   function showResult() {
     if (dom.resultScore) dom.resultScore.textContent = state.score;
-    if (dom.resultDifficulty) dom.resultDifficulty.textContent = "¡¹".repeat(state.currentChallenge.difficulty);
-    showScreen("screen-result");
+    if (dom.resultDifficulty) dom.resultDifficulty.textContent = "".repeat(state.currentChallenge.difficulty);
+    showScreen("resultScreen");
     state.busy = false;
     AudioManager?.complete?.();
   }
@@ -414,10 +414,10 @@
   }
 
   function bindEvents() {
-    dom.startButton?.addEventListener("click", () => { state.round = 1; showChallenges(); showScreen("screen-challenges"); AudioManager?.click?.(); });
-    dom.continueButton?.addEventListener("click", () => { state.round++; showChallenges(); showScreen("screen-challenges"); AudioManager?.click?.(); });
-    dom.endButton?.addEventListener("click", () => { state.round = 1; resetBoard(); showScreen("screen-home"); AudioManager?.click?.(); });
-    dom.backButton?.addEventListener("click", () => { if (state.busy) return; showChallenges(); showScreen("screen-challenges"); });
+    dom.startButton?.addEventListener("click", () => { state.round = 1; showChallenges(); showScreen("challengeScreen"); AudioManager?.click?.(); });
+    dom.continueButton?.addEventListener("click", () => { state.round++; showChallenges(); showScreen("challengeScreen"); AudioManager?.click?.(); });
+    dom.endButton?.addEventListener("click", () => { state.round = 1; resetBoard(); showScreen("homeScreen"); AudioManager?.click?.(); });
+    dom.backButton?.addEventListener("click", () => { if (state.busy) return; showChallenges(); showScreen("challengeScreen"); });
     dom.undoButton?.addEventListener("click", undo);
   }
 

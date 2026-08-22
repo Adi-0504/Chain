@@ -5,7 +5,13 @@
 
   const state = {
     initialized: false,
-    currentScreen: "screen-home",
+    currentScreen: "homeScreen",
+    screens: {
+        home: "homeScreen",
+        challenges: "challengeScreen",
+        game: "gameScreen",
+        result: "resultScreen"
+    },
     soundEnabled: true,
     language: "zh-TW"
   };
@@ -23,20 +29,20 @@
   function cacheDOM() {
     dom.screens = $all(".screen");
 
-    dom.home = $("#screen-home");
-    dom.challenges = $("#screen-challenges");
-    dom.game = $("#screen-game");
-    dom.result = $("#screen-result");
+    dom.home = $("#homeScreen");
+    dom.challenges = $("#challengeScreen");
+    dom.game = $("#gameScreen");
+    dom.result = $("#resultScreen");
 
-    dom.startButton = $("#start-button");
-    dom.continueButton = $("#continue-button");
-    dom.endButton = $("#end-button");
-    dom.backButton = $("#back-button");
+    dom.startButton = $("#startButton");
+    dom.continueButton = $("#continueButton");
+    dom.endButton = $("#finishButton");
+    dom.backButton = $("#backHomeButton");
 
-    dom.undoButton = $("#undo-button");
+    dom.undoButton = $("#undoButton");
 
-    dom.soundButton = $("#sound-button");
-    dom.languageButton = $("#language-button");
+    dom.soundButton = $("#soundButton");
+    dom.languageButton = $("#languageButton");
 
     dom.languageMenu = $("#language-menu");
 
@@ -49,9 +55,8 @@
     dom.gameRound = $("#round-number");
     dom.gameStars = $("#game-stars");
 
-    dom.resultScore = $("#result-score");
-    dom.resultDifficulty =
-      $("#result-difficulty");
+    dom.resultScore = $("#resultScore");
+    dom.resultDifficulty = $("#resultDifficulty");
   }
 
   /*
@@ -484,7 +489,7 @@
     }
 
     showScreen(
-      "screen-challenges"
+      "challengeScreen"
     );
   }
 
@@ -507,7 +512,7 @@
     }
 
     showScreen(
-      "screen-challenges"
+      "challengeScreen"
     );
   }
 
@@ -523,10 +528,10 @@
     }
 
     state.currentScreen =
-      "screen-home";
+      "homeScreen";
 
     showScreen(
-      "screen-home"
+      "homeScreen"
     );
   }
 
@@ -542,7 +547,7 @@
     }
 
     showScreen(
-      "screen-challenges"
+      "challengeScreen"
     );
   }
 
@@ -828,7 +833,7 @@
         ) {
           if (
             state.currentScreen ===
-            "screen-game"
+            "gameScreen"
           ) {
             event.preventDefault();
 
