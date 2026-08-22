@@ -1171,4 +1171,4 @@ main {
   .result-card {
     padding: 36px 22px;
   }
-}
+}.next-card { transform: scale(0.8); opacity: 0.8; } .piece-preview { width: 60px; }
