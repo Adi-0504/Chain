@@ -1,0 +1,12 @@
+{
+  "name": "Chain",
+  "short_name": "Chain",
+  "description": "A cozy shape puzzle game.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf5ed",
+  "theme_color": "#6f4e37",
+  "orientation": "portrait-primary",
+  "lang": "zh-TW",
+  "icons": []
+}

@@ -1,0 +1,80 @@
+{
+  "app": {
+    "title": "Chain",
+    "tagline": "慢慢連起來"
+  },
+
+  "common": {
+    "back": "返回"
+  },
+
+  "home": {
+    "eyebrow": "COZY SHAPE PUZZLE",
+    "title": "找到屬於你的連鎖。",
+    "description": "把棋子放進剛剛好的位置，旋轉、鏡像，慢慢拼出今天的形狀。",
+    "start": "開始挑戰",
+
+    "cards": {
+      "board": {
+        "title": "8 × 8 棋盤",
+        "description": "在有限的空間裡找到最好的位置。"
+      },
+
+      "shape": {
+        "title": "指定形狀",
+        "description": "每一次挑戰都有不同的形狀等待完成。"
+      },
+
+      "transform": {
+        "title": "自由變換",
+        "description": "旋轉與鏡像，找到最適合的解法。"
+      }
+    }
+  },
+
+  "challenge": {
+    "title": "今天的挑戰",
+    "subtitle": "三個不同難度的挑戰，選一個開始吧。",
+    "card": {
+      "challenge": "挑戰 {{number}}",
+      "pieces": "{{count}} 格",
+      "start": "開始"
+    }
+  },
+
+  "game": {
+    "challenge": "挑戰",
+    "target": "目標形狀",
+    "difficulty": "難度",
+    "rotate": "旋轉",
+    "mirror": "鏡像",
+    "undo": "悔棋",
+    "nextPiece": "下一個",
+
+    "tip": {
+      "title": "小提示",
+      "description": "不要急著放。先看看下一顆棋子，留一點空間給它。"
+    },
+
+    "neutral": "這顆棋子不能使用。",
+    "blocked": "這裡不能放置。",
+    "wrong": "還差一點點。",
+    "complete": "完成了！"
+  },
+
+  "result": {
+    "eyebrow": "CHALLENGE COMPLETE",
+    "title": "漂亮完成！",
+    "description": "你的形狀成功連起來了。",
+    "score": "本次得分",
+    "continue": "繼續挑戰",
+    "finish": "結束今天的挑戰"
+  },
+
+  "settings": {
+    "sound": "音效",
+    "language": "切換語言",
+    "soundOn": "音效已開啟",
+    "soundOff": "音效已關閉"
+  }
+}

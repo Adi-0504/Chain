@@ -1,0 +1,80 @@
+{
+  "app": {
+    "title": "Chain",
+    "tagline": "Take it one link at a time"
+  },
+
+  "common": {
+    "back": "Back"
+  },
+
+  "home": {
+    "eyebrow": "COZY SHAPE PUZZLE",
+    "title": "Find your perfect chain.",
+    "description": "Place each piece just right. Rotate, mirror, and slowly build today's shape.",
+    "start": "Start Challenge",
+
+    "cards": {
+      "board": {
+        "title": "8 × 8 Board",
+        "description": "Find the best placement inside a limited space."
+      },
+
+      "shape": {
+        "title": "Target Shapes",
+        "description": "Every challenge gives you a different shape to complete."
+      },
+
+      "transform": {
+        "title": "Free Transform",
+        "description": "Rotate and mirror pieces to find your solution."
+      }
+    }
+  },
+
+  "challenge": {
+    "title": "Today's Challenges",
+    "subtitle": "Three challenges with different difficulties. Pick one.",
+    "card": {
+      "challenge": "Challenge {{number}}",
+      "pieces": "{{count}} cells",
+      "start": "Start"
+    }
+  },
+
+  "game": {
+    "challenge": "Challenge",
+    "target": "Target Shape",
+    "difficulty": "Difficulty",
+    "rotate": "Rotate",
+    "mirror": "Mirror",
+    "undo": "Undo",
+    "nextPiece": "Next Piece",
+
+    "tip": {
+      "title": "Little Tip",
+      "description": "Don't rush. Look at the next piece and leave some space for it."
+    },
+
+    "neutral": "This piece cannot be used.",
+    "blocked": "This space is blocked.",
+    "wrong": "Almost there.",
+    "complete": "Complete!"
+  },
+
+  "result": {
+    "eyebrow": "CHALLENGE COMPLETE",
+    "title": "Nicely done!",
+    "description": "Your shape has been successfully completed.",
+    "score": "Score",
+    "continue": "Continue",
+    "finish": "Finish for Today"
+  },
+
+  "settings": {
+    "sound": "Sound",
+    "language": "Change Language",
+    "soundOn": "Sound On",
+    "soundOff": "Sound Off"
+  }
+}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <meta name="theme-color" content="#6f4e37" />
+  <meta
+    name="description"
+    content="Chain — A cozy shape puzzle game."
+  />
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <title>Chain</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">
+          <i data-lucide="link-2"></i>
+        </div>
+
+        <div>
+          <h1>Chain</h1>
+          <p data-i18n="app.tagline"></p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button
+          id="soundButton"
+          class="icon-button"
+          type="button"
+          aria-label="Sound"
+          data-tooltip="settings.sound"
+        >
+          <i data-lucide="volume-2"></i>
+        </button>
+
+        <button
+          id="languageButton"
+          class="icon-button"
+          type="button"
+          aria-label="Language"
+          data-tooltip="settings.language"
+        >
+          <i data-lucide="languages"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+
+      <section id="homeScreen" class="screen active">
+
+        <div class="hero-card">
+          <div class="hero-decoration hero-decoration-one"></div>
+          <div class="hero-decoration hero-decoration-two"></div>
+
+          <div class="hero-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="home.eyebrow"></p>
+            <h2 data-i18n="home.title"></h2>
+            <p data-i18n="home.description"></p>
+          </div>
+
+          <button id="startButton" class="primary-button" type="button">
+            <span data-i18n="home.start"></span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="info-grid">
+
+          <article class="info-card">
+            <div class="info-icon">
+              <i data-lucide="grid-2x2"></i>
+            </div>
+
+            <div>
+              <h3 data-i18n="home.cards.board.title"></h3>
+              <p data-i18n="home.cards.board.description"></p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">
+              <i data-lucide="shape"></i>
+            </div>
+
+            <div>
+              <h3 data-i18n="home.cards.shape.title"></h3>
+              <p data-i18n="home.cards.shape.description"></p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">
+              <i data-lucide="rotate-cw"></i>
+            </div>
+
+            <div>
+              <h3 data-i18n="home.cards.transform.title"></h3>
+              <p data-i18n="home.cards.transform.description"></p>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+      <section id="challengeScreen" class="screen">
+
+        <div class="challenge-header">
+
+          <div>
+            <button id="backHomeButton" class="text-button" type="button">
+              <i data-lucide="chevron-left"></i>
+              <span data-i18n="common.back"></span>
+            </button>
+
+            <h2 data-i18n="challenge.title"></h2>
+            <p data-i18n="challenge.subtitle"></p>
+          </div>
+
+          <div class="challenge-progress">
+            <span id="challengeCounter">1 / 3</span>
+          </div>
+
+        </div>
+
+        <div id="challengeList" class="challenge-list"></div>
+
+      </section>
+
+      <section id="gameScreen" class="screen">
+
+        <div class="game-layout">
+
+          <div class="game-main">
+
+            <div class="game-topbar">
+
+              <button id="gameBackButton" class="icon-button" type="button">
+                <i data-lucide="arrow-left"></i>
+              </button>
+
+              <div class="game-status">
+                <span class="game-label" data-i18n="game.challenge"></span>
+                <strong id="gameChallengeName">—</strong>
+              </div>
+
+              <div class="score-pill">
+                <i data-lucide="star"></i>
+                <span id="scoreValue">0</span>
+              </div>
+
+            </div>
+
+            <div class="target-card">
+
+              <div>
+                <span class="section-label" data-i18n="game.target"></span>
+                <h3 id="targetName">—</h3>
+              </div>
+
+              <div id="targetPreview" class="target-preview"></div>
+
+              <div class="difficulty">
+                <span data-i18n="game.difficulty"></span>
+                <span id="difficultyStars"></span>
+              </div>
+
+            </div>
+
+            <div id="board" class="board" aria-label="Game board"></div>
+
+            <div class="game-controls">
+
+              <button id="rotateButton" class="control-button" type="button">
+                <i data-lucide="rotate-cw"></i>
+                <span data-i18n="game.rotate"></span>
+              </button>
+
+              <button id="mirrorButton" class="control-button" type="button">
+                <i data-lucide="flip-horizontal-2"></i>
+                <span data-i18n="game.mirror"></span>
+              </button>
+
+              <button id="undoButton" class="control-button" type="button">
+                <i data-lucide="undo-2"></i>
+                <span data-i18n="game.undo"></span>
+                <small id="undoCount">3</small>
+              </button>
+
+            </div>
+
+          </div>
+
+          <aside class="game-side">
+
+            <div class="next-card">
+              <div class="side-heading">
+                <span data-i18n="game.nextPiece"></span>
+                <i data-lucide="move-right"></i>
+              </div>
+
+              <div id="nextPiecePreview" class="piece-preview"></div>
+            </div>
+
+            <div class="hint-card">
+              <i data-lucide="lightbulb"></i>
+              <div>
+                <strong data-i18n="game.tip.title"></strong>
+                <p data-i18n="game.tip.description"></p>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+      <section id="resultScreen" class="screen">
+
+        <div class="result-card">
+
+          <div id="resultIcon" class="result-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+
+          <span class="eyebrow" data-i18n="result.eyebrow"></span>
+
+          <h2 id="resultTitle"></h2>
+
+          <p id="resultDescription"></p>
+
+          <div class="result-score">
+            <span data-i18n="result.score"></span>
+            <strong id="resultScore">0</strong>
+          </div>
+
+          <div class="result-actions">
+
+            <button id="continueButton" class="primary-button" type="button">
+              <span data-i18n="result.continue"></span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+            <button id="finishButton" class="secondary-button" type="button">
+              <span data-i18n="result.finish"></span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@25.6.0/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js"></script>
+
+  <script src="./i18n.js"></script>
+  <script src="./audio.js"></script>
+  <script src="./animation.js"></script>
+  <script src="./game.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
