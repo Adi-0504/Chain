@@ -318,8 +318,11 @@
     if (state.busy) return;
     state.busy = true;
     state.score = ScoreManager.calculateScore(state.currentChallenge.difficulty);
-    AudioManager?.success?.();
-    animateSuccess(getPlayerCells(), () => showResult());
+    AudioManager.play('success');
+    animateSuccess(getPlayerCells(), () => {
+        AudioManager.play('complete');
+        showResult();
+    });
   }
 
   function showResult() {
@@ -327,7 +330,6 @@
     if (dom.resultDifficulty) dom.resultDifficulty.textContent = "".repeat(state.currentChallenge.difficulty);
     showScreen("resultScreen");
     state.busy = false;
-    AudioManager?.complete?.();
   }
 
   function undo() {

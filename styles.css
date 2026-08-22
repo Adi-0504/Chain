@@ -1145,23 +1145,21 @@ main {
   }
 
   .board {
-    gap: 4px;
-    padding: 6px;
-    border-radius: 19px;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 20px;
   }
 
   .cell {
-    border-radius: 9px;
-  }
-
-  .game-controls {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    border-radius: 10px;
+    min-width: 35px;
+    min-height: 35px;
   }
 
   .control-button {
-    justify-content: center;
-    padding: 9px 4px;
+    min-height: 50px;
+    min-width: 50px;
+    padding: 12px 16px;
   }
 
   .control-button span {
