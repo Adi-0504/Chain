@@ -452,7 +452,11 @@
     dom.undoButton?.addEventListener("click", undo);
   }
 
-  window.ChainGame = { state, init, showChallenges, selectChallenge, resetBoard };
+  if (typeof window !== 'undefined') {
+    window.ChainGame = { state, init, showChallenges, selectChallenge, resetBoard };
+  }
 
-  document.addEventListener("DOMContentLoaded", () => { init(); refreshIcons(); });
+  if (typeof document !== 'undefined') {
+    document.addEventListener("DOMContentLoaded", () => { init(); refreshIcons(); });
+  }
 })();
