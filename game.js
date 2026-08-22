@@ -507,7 +507,7 @@
 
             <span class="challenge-stars"
               aria-label="${challenge.difficulty} stars">
-              ${"★".repeat(challenge.difficulty)}
+              ${"??.repeat(challenge.difficulty)}
             </span>
           </div>
 
@@ -581,7 +581,7 @@
 
     if (dom.gameStars) {
       dom.gameStars.textContent =
-        "★".repeat(challenge.difficulty);
+        "??.repeat(challenge.difficulty);
     }
 
     if (dom.targetPreview) {
@@ -700,7 +700,7 @@
     }
 
     if (
-      playerCells.length < target.length
+      playerCells.length !== target.length
     ) {
       return;
     }
@@ -888,7 +888,7 @@
 
     if (dom.resultDifficulty) {
       dom.resultDifficulty.textContent =
-        "★".repeat(
+        "??.repeat(
           state.currentChallenge.difficulty
         );
     }
